@@ -2,6 +2,7 @@
 #define CENTRALWIDGET_HXX
 
 #include <QWidget>
+#include <QTabWidget>
 
 class CentralWidget : public QWidget
 {
@@ -12,6 +13,8 @@ public:
 signals:
 
 public slots:
+private:
+    QTabWidget* m_TabWidget;
 };
 
 #endif // CENTRALWIDGET_HXX
