@@ -18,13 +18,17 @@ SOURCES +=\
     src/ui/mainwindow.cxx \
     src/ui/centralwidget.cxx \
     src/util/application_manager.cxx \
-    src/model/accounttypemodel.cxx
+    src/model/accounttypemodel.cxx \
+    src/ui/accounttypewidget.cxx \
+    src/model/accountmodel.cxx
 
 HEADERS  +=\
     include/mainwindow.hxx \
     include/centralwidget.hxx \
     include/application_manager.hxx \
-    include/accounttypemodel.hxx
+    include/accounttypemodel.hxx \
+    include/accounttypwidget.hxx \
+    src/model/accountmodel.hxx
 
 RESOURCES += \
     res/application.qrc

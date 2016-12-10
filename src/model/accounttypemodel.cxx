@@ -1,5 +1,6 @@
 #include "accounttypemodel.hxx"
 
+//---------------------------------------------------------------------
 AccountTypeModel::AccountTypeModel(QObject* parent) : QSqlTableModel(parent)
 {
     this->setTable("account_type");
