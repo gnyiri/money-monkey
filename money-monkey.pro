@@ -32,7 +32,8 @@ HEADERS  +=\
     src/util/application_manager.hxx \
     src/model/accounttypemodel.hxx \
     src/ui/accounttypwidget.hxx \
-    src/model/accountmodel.hxx
+    src/model/accountmodel.hxx \
+    src/ui/accounttypedialog.hxx
 
 RESOURCES += \
     res/application.qrc

@@ -4,10 +4,17 @@
 #include <QObject>
 #include <QSqlTableModel>
 
+/*!
+ * \brief The AccountModel class
+ */
 class AccountModel : public QSqlTableModel
 {
 public:
-    AccountModel(QObject* parent = 0);
+  /*!
+   * \brief AccountModel
+   * \param parent
+   */
+  AccountModel(QObject* parent = 0);
 };
 
 #endif // ACCOUNTMODEL_HXX

@@ -5,17 +5,40 @@
 #include <QTableView>
 #include "accounttypemodel.hxx"
 
+/*!
+ * \brief The AccountTypeWidget class
+ */
 class AccountTypeWidget : public QWidget
 {
-    //Q_OBJECT
+  //Q_OBJECT
 
 public:
-    AccountTypeWidget(QWidget* parent = 0);
-    void add_new_account_type();
-    void delete_account_type();
+  /*!
+   * \brief AccountTypeWidget
+   * \param parent
+   */
+  AccountTypeWidget(QWidget* parent = 0);
+  /*!
+   * \brief AccountTypeWidget
+   */
+  ~AccountTypeWidget();
+  /*!
+   * \brief add_new_account_type
+   */
+  void add_new_account_type();
+  /*!
+   * \brief delete_account_type
+   */
+  void delete_account_type();
 private:
-    AccountTypeModel* m_AccountTypeModel;
-    QTableView* m_AccountTypeView;
+  /*!
+   * \brief m_AccountTypeModel
+   */
+  AccountTypeModel* m_AccountTypeModel;
+  /*!
+   * \brief m_AccountTypeView
+   */
+  QTableView* m_AccountTypeView;
 };
 
 #endif // ACCOUNTTYPEVIEW_HXX

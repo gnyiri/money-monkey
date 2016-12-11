@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>ic_loop_white_24px.svg</file>
+        <file>images/ic_loop_white_24px.svg</file>
     </qresource>
 </RCC>

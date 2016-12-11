@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    ApplicationManager::get_instance().open_db();
+    ApplicationManager::get_instance();
 
     MainWindow w;
     w.show();

@@ -2,20 +2,38 @@
 #define MAINWINDOW_HXX
 
 #include <QMainWindow>
-
 #include "centralwidget.hxx"
 
+/*!
+ * \brief The MainWindow class
+ */
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+  /*!
+   * \brief MainWindow CTOR
+   * \param parent
+   */
+  MainWindow(QWidget *parent = 0);
+  /*!
+   * \brief MainWindow DTOR
+   */
+  ~MainWindow();
 private:
-    void build_ui();
-    void init_database();
-    CentralWidget* m_CentralWidget;
+  /*!
+   * \brief build_ui
+   */
+  void build_ui();
+  /*!
+   * \brief init_database
+   */
+  void init_database();
+  /*!
+   * \brief m_CentralWidget
+   */
+  CentralWidget* m_CentralWidget;
 };
 
 #endif // MAINWINDOW_HXX
