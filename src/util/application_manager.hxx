@@ -23,12 +23,12 @@ public:
    * \brief open_db
    * \return
    */
-  QSqlError open_db();
+  bool open_db();
   /*!
    * \brief init_db
    * \return
    */
-  QSqlError init_db();
+  bool init_db();
   /*!
    * \brief execute_sql
    * \param statement
@@ -56,6 +56,10 @@ private:
    * \brief m_TableCreates
    */
   std::vector<std::string> m_TableCreates;
+  /*!
+   * \brief m_TableInserts
+   */
+  std::vector<std::string> m_TableInserts;
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "accounttypwidget.hxx"
+#include "accounttypewidget.hxx"
 #include <QPushButton>
 #include <QTableView>
 #include <QVBoxLayout>
@@ -15,20 +15,13 @@
 AccountTypeWidget::AccountTypeWidget(QWidget* parent) : QWidget(parent)
 {
   QVBoxLayout* layout = new QVBoxLayout();
-  QHBoxLayout* button_layout = new QHBoxLayout();
   m_AccountTypeModel = new AccountTypeModel();
   m_AccountTypeView = new QTableView(this);
   m_AccountTypeView->setModel(m_AccountTypeModel);
   m_AccountTypeView->verticalHeader()->setVisible(0);
   m_AccountTypeView->setSelectionBehavior(QTableView::SelectRows);
+  m_AccountTypeView->hideColumn(0);
   layout->addWidget(m_AccountTypeView);
-  QPushButton* add_new_account_type_button = new QPushButton("Add new account type", this);
-  connect(add_new_account_type_button, &QPushButton::clicked, this, &AccountTypeWidget::add_new_account_type);
-  QPushButton* delete_account_type_button = new QPushButton("Delete account type", this);
-  connect(delete_account_type_button, &QPushButton::clicked, this, &AccountTypeWidget::delete_account_type);
-  button_layout->addWidget(add_new_account_type_button);
-  button_layout->addWidget(delete_account_type_button);
-  layout->addLayout(button_layout);
   setLayout(layout);
 }
 //---------------------------------------------------------------------

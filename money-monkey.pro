@@ -18,22 +18,23 @@ INCLUDEPATH +=\
     src/model
 
 SOURCES +=\
-    src/main.cxx\
-    src/ui/mainwindow.cxx \
-    src/ui/centralwidget.cxx \
     src/util/application_manager.cxx \
     src/model/accounttypemodel.cxx \
+    src/model/accountmodel.cxx \
+    src/ui/mainwindow.cxx \
+    src/ui/centralwidget.cxx \
     src/ui/accounttypewidget.cxx \
-    src/model/accountmodel.cxx
+    src/ui/accountwidget.cxx \
+    src/main.cxx
 
 HEADERS  +=\
-    src/ui/mainwindow.hxx \
-    src/ui/centralwidget.hxx \
     src/util/application_manager.hxx \
     src/model/accounttypemodel.hxx \
-    src/ui/accounttypwidget.hxx \
     src/model/accountmodel.hxx \
-    src/ui/accounttypedialog.hxx
+    src/ui/accountwidget.hxx \
+    src/ui/accounttypewidget.hxx \
+    src/ui/mainwindow.hxx \
+    src/ui/centralwidget.hxx
 
 RESOURCES += \
     res/application.qrc

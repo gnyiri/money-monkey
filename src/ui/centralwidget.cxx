@@ -1,6 +1,7 @@
 #include "centralwidget.hxx"
 #include <QVBoxLayout>
-#include "accounttypwidget.hxx"
+#include "accounttypewidget.hxx"
+#include "accountwidget.hxx"
 
 //---------------------------------------------------------------------
 CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent),
@@ -10,7 +11,9 @@ CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent),
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->addWidget(m_TabWidget);
     AccountTypeWidget* account_type_widget = new AccountTypeWidget(this);
+    AccountWidget* account_widget = new AccountWidget(this);
     m_TabWidget->addTab(account_type_widget, "Account types");
+    m_TabWidget->addTab(account_widget, "Accounts");
     setLayout(layout);
-    setMinimumSize(900, 400);
+    setMinimumSize(900, 700);
 }
