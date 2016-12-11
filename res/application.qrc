@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>images/ic_loop_white_24px.svg</file>
+        <file>images/cash.svg</file>
+        <file>images/house.svg</file>
+        <file>images/piggy-bank.svg</file>
+        <file>images/credit-card.svg</file>
+        <file>images/debit-card.svg</file>
     </qresource>
 </RCC>

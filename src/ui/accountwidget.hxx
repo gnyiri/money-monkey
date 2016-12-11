@@ -20,6 +20,10 @@ public:
    * \brief add_new_account
    */
   void add_new_account();
+  /*!
+   * \brief delete_account
+   */
+  void delete_account();
 
 private:
   /*!

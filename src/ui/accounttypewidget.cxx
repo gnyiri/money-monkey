@@ -21,14 +21,13 @@ AccountTypeWidget::AccountTypeWidget(QWidget* parent) : QWidget(parent)
   m_AccountTypeView->verticalHeader()->setVisible(0);
   m_AccountTypeView->setSelectionBehavior(QTableView::SelectRows);
   m_AccountTypeView->hideColumn(0);
+  m_AccountTypeView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch );
   layout->addWidget(m_AccountTypeView);
   setLayout(layout);
 }
 //---------------------------------------------------------------------
 AccountTypeWidget::~AccountTypeWidget()
 {
-  delete m_AccountTypeModel;
-  delete m_AccountTypeView;
 }
 //---------------------------------------------------------------------
 void AccountTypeWidget::add_new_account_type()

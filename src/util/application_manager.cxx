@@ -14,21 +14,24 @@ ApplicationManager& ApplicationManager::get_instance()
 //---------------------------------------------------------------------
 ApplicationManager::ApplicationManager()
 {
-  m_TableCreates.push_back(std::string("create table account_type(id integer, name varchar(40), color varchar(40), primary key(id));"));
-  m_TableCreates.push_back(std::string("create table account(id integer, name varchar(40), account_type_id integer, initial_balance integer, current_balance integer, primary key(id));"));
+  m_TableCreates.push_back(std::string("create table account_type(id integer, name varchar(40), color varchar(40), icon varchar(40), primary key(id))"));
+  m_TableCreates.push_back(std::string("create table account(id integer, name varchar(40), account_type_id integer, initial_balance integer, current_balance integer, primary key(id))"));
 
   m_TableDrops.push_back(std::string("drop table account_type"));
   m_TableDrops.push_back(std::string("drop table account"));
 
-  m_TableInserts.push_back(std::string("insert into account_type (name, color) values('Debit Card', '#7777FF')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color) values('Credit Card', '#FF4444')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color) values('Saving', '#44FF44')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color) values('Loan', '#FFFF44')"));
+  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Debit Card', '#7777FF', 'debit-card.svg')"));
+  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Credit Card', '#FF4444', 'credit-card.svg')"));
+  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Saving', '#44FF44', 'piggy-bank.svg')"));
+  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Loan', '#FFFF44', 'house.svg')"));
+  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Cash', '#00FF00', 'cash.svg')"));
+
+  m_TableInserts.push_back(std::string("insert into account (name, account_type_id) values('Cash', 1)"));
 }
 //---------------------------------------------------------------------
 ApplicationManager::~ApplicationManager()
 {
-  m_Database.close();
+  //m_Database.close();
 }
 //---------------------------------------------------------------------
 bool ApplicationManager::open_db()
