@@ -11,7 +11,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = money-monkey
 TEMPLATE = app
 
-INCLUDEPATH = "include"
+INCLUDEPATH +=\
+    src\
+    src/ui\
+    src/util\
+    src/model
 
 SOURCES +=\
     src/main.cxx\
@@ -23,11 +27,11 @@ SOURCES +=\
     src/model/accountmodel.cxx
 
 HEADERS  +=\
-    include/mainwindow.hxx \
-    include/centralwidget.hxx \
-    include/application_manager.hxx \
-    include/accounttypemodel.hxx \
-    include/accounttypwidget.hxx \
+    src/ui/mainwindow.hxx \
+    src/ui/centralwidget.hxx \
+    src/util/application_manager.hxx \
+    src/model/accounttypemodel.hxx \
+    src/ui/accounttypwidget.hxx \
     src/model/accountmodel.hxx
 
 RESOURCES += \
