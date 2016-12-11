@@ -1,5 +1,10 @@
 #include "accountmodel.hxx"
 #include <QSqlRelation>
+#include <QDebug>
+#include <QSqlRecord>
+#include <QSqlQuery>
+#include <QString>
+#include <QSqlField>
 
 //---------------------------------------------------------------------
 AccountModel::AccountModel(QObject* parent) : QSqlRelationalTableModel(parent)
@@ -19,5 +24,21 @@ AccountModel::AccountModel(QObject* parent) : QSqlRelationalTableModel(parent)
 //---------------------------------------------------------------------
 QVariant AccountModel::data(const QModelIndex &idx, int role) const
 {
+  if(idx.column() == 1)
+  {
+    switch(role)
+    {
+      case Qt::DisplayRole:
+        QVariant current_data(QSqlRelationalTableModel::data(idx.sibling(idx.row(), 2), Qt::DisplayRole));
+        qDebug() << current_data;
+        QSqlRecord current_record = record(idx.row());
+        qDebug() << current_record;
+        //QVariant current_value(current_record.field(2));
+        QSqlField field = current_record.field(2);
+        qDebug() << field.typeID();
+        QSqlQuery query(QString("select icon from account_type where id=3"));
+      break;
+    }
+  }
   return QSqlRelationalTableModel::data(idx, role);
 }
