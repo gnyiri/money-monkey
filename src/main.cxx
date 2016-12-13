@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     if(!ApplicationManager::get_instance().open_db())
     {
       qDebug() << "Cold not open Database!";
-      return -1;
+      exit(-1);
     }
 
     MainWindow w;

@@ -31,7 +31,10 @@ ApplicationManager::ApplicationManager()
 //---------------------------------------------------------------------
 ApplicationManager::~ApplicationManager()
 {
-  //m_Database.close();
+  /*if (m_Database.isOpen())
+  {
+    m_Database.close();
+  }*/
 }
 //---------------------------------------------------------------------
 bool ApplicationManager::open_db()
@@ -44,12 +47,19 @@ bool ApplicationManager::open_db()
   m_Database = QSqlDatabase::addDatabase("QSQLITE");
   m_Database.setDatabaseName(database_file_path);
 
-  if (!m_Database.open())
+  if(!m_Database.open())
   {
+    qDebug() << "Could not open database!";
+
     return false;
   }
 
-  qDebug() << "Database tables: " << m_Database.tables();
+  if(m_Database.tables().size() == 0)
+  {
+    init_db();
+  }
+
+  //qDebug() << "Database tables: " << m_Database.tables();
 
   return true;
 }
@@ -83,7 +93,7 @@ bool ApplicationManager::init_db()
     }
   }
 
-  return false;
+  return true;
 }
 //---------------------------------------------------------------------
 QSqlError ApplicationManager::execute_sql(const QString &statement)

@@ -7,6 +7,7 @@
 #include <QtSql/QSqlError>
 #include <QString>
 #include <QSqlDatabase>
+#include <QSqlQuery>
 
 /*!
  * \brief The ApplicationManager class

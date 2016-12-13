@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QString>
 #include <QSqlField>
+#include <QIcon>
 
 //---------------------------------------------------------------------
 AccountModel::AccountModel(QObject* parent) : QSqlRelationalTableModel(parent)
@@ -28,15 +29,16 @@ QVariant AccountModel::data(const QModelIndex &idx, int role) const
   {
     switch(role)
     {
-      case Qt::DisplayRole:
-        QVariant current_data(QSqlRelationalTableModel::data(idx.sibling(idx.row(), 2), Qt::DisplayRole));
-        qDebug() << current_data;
+      case Qt::DecorationRole:
         QSqlRecord current_record = record(idx.row());
-        qDebug() << current_record;
-        //QVariant current_value(current_record.field(2));
-        QSqlField field = current_record.field(2);
-        qDebug() << field.typeID();
-        QSqlQuery query(QString("select icon from account_type where id=3"));
+        QSqlField id = current_record.field(0);
+        QSqlQuery query(QString("select icon from account_type, account where account_type.id=account.account_type_id and account.id=") + QString(id.value().toString()));
+        query.exec();
+
+        if(query.next())
+        {
+          return QVariant(QIcon(QString(":/images/") + query.value(0).toString()));
+        }
       break;
     }
   }

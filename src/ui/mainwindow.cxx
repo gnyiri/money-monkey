@@ -22,7 +22,7 @@ void MainWindow::build_ui()
   QMenu* database_menu = menuBar()->addMenu(tr("&Database"));
   QToolBar* database_toolbar = addToolBar(tr("Database"));
 
-  const QIcon init_icon = QIcon::fromTheme("document-new", QIcon(":/images/ic_loop_white_24px.svg"));
+  const QIcon init_icon = QIcon::fromTheme("document-new", QIcon(":/images/database.svg"));
   QAction* init_action = new QAction(init_icon, tr("&Init"), this);
 
   database_menu->addAction(init_action);

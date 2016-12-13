@@ -6,5 +6,6 @@
         <file>images/piggy-bank.svg</file>
         <file>images/credit-card.svg</file>
         <file>images/debit-card.svg</file>
+        <file>images/database.svg</file>
     </qresource>
 </RCC>
