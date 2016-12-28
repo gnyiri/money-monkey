@@ -15,7 +15,7 @@ ApplicationManager& ApplicationManager::get_instance()
 ApplicationManager::ApplicationManager()
 {
   m_TableCreates.push_back(std::string("create table account_type(id integer, name varchar(40), color varchar(40), icon varchar(40), primary key(id))"));
-  m_TableCreates.push_back(std::string("create table account(id integer, name varchar(40), account_type_id integer, initial_balance integer, current_balance integer, primary key(id))"));
+  m_TableCreates.push_back(std::string("create table account(id integer, name varchar(40), account_type_id integer default 0, initial_balance integer default 0, current_balance integer default 0, primary key(id))"));
 
   m_TableDrops.push_back(std::string("drop table account_type"));
   m_TableDrops.push_back(std::string("drop table account"));

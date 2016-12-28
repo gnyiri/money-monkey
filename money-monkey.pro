@@ -25,7 +25,8 @@ SOURCES +=\
     src/ui/centralwidget.cxx \
     src/ui/accounttypewidget.cxx \
     src/ui/accountwidget.cxx \
-    src/main.cxx
+    src/main.cxx \
+    src/ui/accountdialog.cxx
 
 HEADERS  +=\
     src/util/application_manager.hxx \
@@ -34,7 +35,8 @@ HEADERS  +=\
     src/ui/accountwidget.hxx \
     src/ui/accounttypewidget.hxx \
     src/ui/mainwindow.hxx \
-    src/ui/centralwidget.hxx
+    src/ui/centralwidget.hxx \
+    src/ui/accountdialog.hxx
 
 RESOURCES += \
     res/application.qrc

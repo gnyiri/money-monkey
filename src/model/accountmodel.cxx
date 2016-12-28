@@ -11,7 +11,7 @@
 AccountModel::AccountModel(QObject* parent) : QSqlRelationalTableModel(parent)
 {
   setTable("account");
-  setEditStrategy(QSqlTableModel::OnRowChange);
+  setEditStrategy(QSqlTableModel::OnFieldChange);
   setHeaderData(0, Qt::Horizontal, "id");
   setHeaderData(1, Qt::Horizontal, "Name");
   QSqlRelation relation("account_type", "id", "name");
