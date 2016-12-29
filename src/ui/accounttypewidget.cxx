@@ -18,6 +18,7 @@ AccountTypeWidget::AccountTypeWidget(QWidget* parent) : QWidget(parent)
   m_AccountTypeModel = new AccountTypeModel();
   m_AccountTypeView = new QTableView(this);
   m_AccountTypeView->setModel(m_AccountTypeModel);
+  m_AccountTypeView->setShowGrid(false);
   m_AccountTypeView->verticalHeader()->setVisible(0);
   m_AccountTypeView->setSelectionBehavior(QTableView::SelectRows);
   m_AccountTypeView->hideColumn(0);

@@ -15,6 +15,7 @@ AccountWidget::AccountWidget(QWidget *parent) : QWidget(parent)
   m_AccountModel = new AccountModel();
   m_AccountView = new QTableView(this);
   m_AccountView->setModel(m_AccountModel);
+  m_AccountView->setShowGrid(false);
   m_AccountView->verticalHeader()->setVisible(0);
   m_AccountView->setSelectionBehavior(QTableView::SelectRows);
   m_AccountView->setSelectionMode(QTableView::SingleSelection);
@@ -35,10 +36,12 @@ AccountWidget::AccountWidget(QWidget *parent) : QWidget(parent)
 void AccountWidget::add_new_account()
 {
   AccountDialog* dialog = new AccountDialog(m_AccountModel, this);
+
   if(dialog->exec() == 1)
   {
-
+    m_AccountModel->select();
   }
+
   delete dialog;
 }
 //---------------------------------------------------------------------

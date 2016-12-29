@@ -9,7 +9,7 @@
 AccountTypeModel::AccountTypeModel(QObject* parent) : QSqlTableModel(parent)
 {
   setTable("account_type");
-  setEditStrategy(QSqlTableModel::OnRowChange);
+  setEditStrategy(QSqlTableModel::OnFieldChange);
   setHeaderData(0, Qt::Horizontal, "id");
   setHeaderData(1, Qt::Horizontal, "Name");
   setHeaderData(2, Qt::Horizontal, "Color");

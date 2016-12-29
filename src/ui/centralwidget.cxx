@@ -15,5 +15,5 @@ CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent),
     m_TabWidget->addTab(account_type_widget, "Account types");
     m_TabWidget->addTab(account_widget, "Accounts");
     setLayout(layout);
-    setMinimumSize(900, 700);
+    setMinimumSize(900, 575);
 }

@@ -23,6 +23,10 @@ public:
    * \param parent
    */
   AccountDialog(QSqlRelationalTableModel* account_model, QWidget* parent = 0);
+  /*!
+   * \brief accept
+   */
+  virtual void accept();
 private:
   /*!
    * \brief m_AccountModel
@@ -44,10 +48,6 @@ private:
    * \brief m_InitialBalanceLineEdit
    */
   QLineEdit* m_InitialBalanceLineEdit;
-  /*!
-   * \brief m_CurrentBalanceLineEdit
-   */
-  QLineEdit* m_CurrentBalanceLineEdit;
   /*!
    * \brief m_ButtonBox
    */
