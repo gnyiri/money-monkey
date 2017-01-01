@@ -24,6 +24,11 @@ public:
    */
   AccountDialog(QSqlRelationalTableModel* account_model, QWidget* parent = 0);
   /*!
+   * \brief account_changed
+   */
+  Q_SLOT
+  void account_changed(int index);
+  /*!
    * \brief accept
    */
   virtual void accept();
@@ -48,6 +53,10 @@ private:
    * \brief m_InitialBalanceLineEdit
    */
   QLineEdit* m_InitialBalanceLineEdit;
+  /*!
+   * \brief m_LimitLineEdit
+   */
+  QLineEdit* m_LimitLineEdit;
   /*!
    * \brief m_ButtonBox
    */

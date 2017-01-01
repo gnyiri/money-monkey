@@ -7,5 +7,6 @@
         <file>images/credit-card.svg</file>
         <file>images/debit-card.svg</file>
         <file>images/database.svg</file>
+        <file>database/db_init.sql</file>
     </qresource>
 </RCC>

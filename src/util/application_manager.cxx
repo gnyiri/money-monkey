@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QDebug>
+#include <QFile>
 
 //---------------------------------------------------------------------
 ApplicationManager& ApplicationManager::get_instance()
@@ -14,27 +15,10 @@ ApplicationManager& ApplicationManager::get_instance()
 //---------------------------------------------------------------------
 ApplicationManager::ApplicationManager()
 {
-  m_TableCreates.push_back(std::string("create table account_type(id integer, name varchar(40), color varchar(40), icon varchar(40), primary key(id))"));
-  m_TableCreates.push_back(std::string("create table account(id integer, name varchar(40), account_type_id integer default 0, initial_balance integer default 0, current_balance integer default 0, primary key(id))"));
-
-  m_TableDrops.push_back(std::string("drop table account_type"));
-  m_TableDrops.push_back(std::string("drop table account"));
-
-  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Debit Card', '#7777FF', 'debit-card.svg')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Credit Card', '#FF4444', 'credit-card.svg')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Saving', '#44FF44', 'piggy-bank.svg')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Loan', '#FFFF44', 'house.svg')"));
-  m_TableInserts.push_back(std::string("insert into account_type (name, color, icon) values('Cash', '#00FF00', 'cash.svg')"));
-
-  m_TableInserts.push_back(std::string("insert into account (name, account_type_id) values('Cash', 1)"));
 }
 //---------------------------------------------------------------------
 ApplicationManager::~ApplicationManager()
 {
-  /*if (m_Database.isOpen())
-  {
-    m_Database.close();
-  }*/
 }
 //---------------------------------------------------------------------
 bool ApplicationManager::open_db()
@@ -50,7 +34,6 @@ bool ApplicationManager::open_db()
   if(!m_Database.open())
   {
     qDebug() << "Could not open database!";
-
     return false;
   }
 
@@ -58,8 +41,6 @@ bool ApplicationManager::open_db()
   {
     init_db();
   }
-
-  //qDebug() << "Database tables: " << m_Database.tables();
 
   return true;
 }
@@ -70,29 +51,33 @@ bool ApplicationManager::init_db()
 
   qDebug() << "Initialize Database";
 
-  for(std::vector<std::string>::const_iterator it = m_TableDrops.begin(); it != m_TableDrops.end(); it++)
+  QFile file(QString(":/database/db_init.sql"));
+
+  if (!file.open(QFile::ReadOnly))
   {
-    q.exec(it->c_str());
+    qDebug() << "Could not open SQL file!";
+    return false;
   }
 
-  for(std::vector<std::string>::const_iterator it = m_TableCreates.begin(); it != m_TableCreates.end(); it++)
+  while (!file.atEnd())
   {
-    if(!q.exec(it->c_str()))
+    QByteArray line = file.readLine();
+    std::string line_str = line.toStdString();
+
+    if(line_str.empty())
     {
-      qDebug() << "Error occured during table creates!" << q.lastError();
+      continue;
+    }
+
+    if(!q.exec(line_str.c_str()))
+    {
+      qDebug() << q.lastError();
+      file.close();
       return false;
     }
   }
 
-  for(std::vector<std::string>::const_iterator it = m_TableInserts.begin(); it != m_TableInserts.end(); it++)
-  {
-    if(!q.exec(it->c_str()))
-    {
-      qDebug() << "Error occured during table insertions!" << q.lastError();
-      return false;
-    }
-  }
-
+  file.close();
   return true;
 }
 //---------------------------------------------------------------------

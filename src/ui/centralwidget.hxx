@@ -4,17 +4,27 @@
 #include <QWidget>
 #include <QTabWidget>
 
+
+/*!
+ * \brief The CentralWidget class
+ */
 class CentralWidget : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
 public:
-    explicit CentralWidget(QWidget *parent = 0);
+  /*!
+   * \brief CentralWidget
+   * \param parent
+   */
+  explicit CentralWidget(QWidget *parent = 0);
 
 signals:
-
 public slots:
 private:
-    QTabWidget* m_TabWidget;
+  /*!
+   * \brief m_TabWidget
+   */
+  QTabWidget* m_TabWidget;
 };
 
 #endif // CENTRALWIDGET_HXX

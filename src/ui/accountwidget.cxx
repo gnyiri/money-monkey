@@ -3,6 +3,7 @@
 #include <QPushButton>
 #include <QHeaderView>
 #include <QSqlRelationalDelegate>
+#include <QMessageBox>
 
 #include "accountwidget.hxx"
 #include "accountdialog.hxx"
@@ -37,7 +38,7 @@ void AccountWidget::add_new_account()
 {
   AccountDialog* dialog = new AccountDialog(m_AccountModel, this);
 
-  if(dialog->exec() == 1)
+  if(dialog->exec() == AccountDialog::Accepted)
   {
     m_AccountModel->select();
   }
@@ -47,7 +48,10 @@ void AccountWidget::add_new_account()
 //---------------------------------------------------------------------
 void AccountWidget::delete_account()
 {
-  QModelIndex index = m_AccountView->currentIndex();
-  m_AccountModel->removeRow(index.row());
-  m_AccountModel->select();
+  if(QMessageBox::question(this, "Delete Account", "Are you sure to delete the selected Account?", QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+  {
+    QModelIndex index = m_AccountView->currentIndex();
+    m_AccountModel->removeRow(index.row());
+    m_AccountModel->select();
+  }
 }

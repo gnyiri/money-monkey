@@ -49,18 +49,6 @@ private:
    * \brief m_Database
    */
   QSqlDatabase m_Database;
-  /*!
-   * \brief m_TableDrops
-   */
-  std::vector<std::string> m_TableDrops;
-  /*!
-   * \brief m_TableCreates
-   */
-  std::vector<std::string> m_TableCreates;
-  /*!
-   * \brief m_TableInserts
-   */
-  std::vector<std::string> m_TableInserts;
 };
 
 #endif

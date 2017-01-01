@@ -11,14 +11,18 @@
 AccountModel::AccountModel(QObject* parent) : QSqlRelationalTableModel(parent)
 {
   setTable("account");
+
   setEditStrategy(QSqlTableModel::OnFieldChange);
   setHeaderData(0, Qt::Horizontal, "id");
   setHeaderData(1, Qt::Horizontal, "Name");
+
   QSqlRelation relation("account_type", "id", "name");
   setRelation(2, relation);
+
   setHeaderData(2, Qt::Horizontal, "Account type");
   setHeaderData(3, Qt::Horizontal, "Initial balance");
-  setHeaderData(4, Qt::Horizontal, "Current balance");
+  setHeaderData(4, Qt::Horizontal, "Balance limit");
+  setHeaderData(5, Qt::Horizontal, "Current balance");
 
   select();
 }
@@ -42,5 +46,6 @@ QVariant AccountModel::data(const QModelIndex &idx, int role) const
       break;
     }
   }
+
   return QSqlRelationalTableModel::data(idx, role);
 }

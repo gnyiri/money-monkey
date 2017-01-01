@@ -26,7 +26,11 @@ SOURCES +=\
     src/ui/accounttypewidget.cxx \
     src/ui/accountwidget.cxx \
     src/main.cxx \
-    src/ui/accountdialog.cxx
+    src/ui/accountdialog.cxx \
+    src/ui/accountdelegate.cxx \
+    src/model/expensetypemodel.cxx \
+    src/ui/expensetypewidget.cxx \
+    src/ui/expensetypedialog.cxx
 
 HEADERS  +=\
     src/util/application_manager.hxx \
@@ -36,7 +40,11 @@ HEADERS  +=\
     src/ui/accounttypewidget.hxx \
     src/ui/mainwindow.hxx \
     src/ui/centralwidget.hxx \
-    src/ui/accountdialog.hxx
+    src/ui/accountdialog.hxx \
+    src/ui/accountdelegate.hxx \
+    src/model/expensetypemodel.hxx \
+    src/ui/expensetypewidget.hxx \
+    src/ui/expensetypedialog.hxx
 
 RESOURCES += \
     res/application.qrc

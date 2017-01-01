@@ -8,6 +8,9 @@
 #include <QSqlRecord>
 #include <QSqlField>
 #include <QIntValidator>
+#include <QMessageBox>
+#include <QDebug>
+#include <QSqlError>
 
 //---------------------------------------------------------------------
 AccountDialog::AccountDialog(QSqlRelationalTableModel* account_model, QWidget* parent) :
@@ -39,9 +42,14 @@ AccountDialog::AccountDialog(QSqlRelationalTableModel* account_model, QWidget* p
   form_layout->addRow(tr("Account Type"), m_AccountTypeCombo);
   // line edit for initial balance
   m_InitialBalanceLineEdit = new QLineEdit;
-  m_InitialBalanceLineEdit->setValidator(new QIntValidator(0, 99999999, this));
+  m_InitialBalanceLineEdit->setValidator(new QIntValidator(-9999999, 9999999, this));
   m_InitialBalanceLineEdit->setText("0");
   form_layout->addRow(tr("Initial Balance"), m_InitialBalanceLineEdit);
+  // line edit for limit
+  m_LimitLineEdit = new QLineEdit;
+  m_LimitLineEdit->setValidator(new QIntValidator(0, 9999999, this));
+  m_LimitLineEdit->setText("0");
+  form_layout->addRow(tr("Limit"), m_LimitLineEdit);
   // layouts
   m_GroupBox->setLayout(form_layout);
   main_layout->addWidget(m_GroupBox);
@@ -50,6 +58,7 @@ AccountDialog::AccountDialog(QSqlRelationalTableModel* account_model, QWidget* p
   // signal handlers
   connect(m_ButtonBox, &QDialogButtonBox::accepted, this, &AccountDialog::accept);
   connect(m_ButtonBox, &QDialogButtonBox::rejected, this, &AccountDialog::reject);
+  connect(m_AccountTypeCombo, SIGNAL(currentIndexChanged(int)), this, SLOT(account_changed(int)));
   // final layout settings
   main_layout->addWidget(m_ButtonBox);
   setLayout(main_layout);
@@ -57,16 +66,33 @@ AccountDialog::AccountDialog(QSqlRelationalTableModel* account_model, QWidget* p
   setWindowTitle(tr("New Account"));
 }
 //---------------------------------------------------------------------
+void AccountDialog::account_changed(int index)
+{
+  qDebug() << "Hoki";
+}
+//---------------------------------------------------------------------
 void AccountDialog::accept()
 {
+  if(m_NameLineEdit->text().isEmpty())
+  {
+    QMessageBox::warning(this, tr("Warning"), tr("Name field is empty!"), QMessageBox::Ok);
+    return;
+  }
+
   QSqlQuery sql_query;
 
-  sql_query.prepare("insert into account (name, account_type_id, initial_balance) values(:name, :account_type_id, :initial_balance)");
+  sql_query.prepare("insert into account (name, account_type_id, initial_balance, balance_limit) values(:name, :account_type_id, :initial_balance, :balance_limit)");
   sql_query.bindValue(":name", m_NameLineEdit->text());
   QSqlQueryModel* sql_query_model = static_cast<QSqlQueryModel*>(m_AccountTypeCombo->model());
   sql_query.bindValue(":account_type_id", sql_query_model->data(sql_query_model->index(m_AccountTypeCombo->currentIndex(), 0)));
   sql_query.bindValue(":initial_balance", m_InitialBalanceLineEdit->text());
-  sql_query.exec();
+  sql_query.bindValue(":balance_limit", m_LimitLineEdit->text());
+
+  if(!sql_query.exec())
+  {
+    qDebug() << sql_query.lastError();
+    QMessageBox::warning(this, tr("Warning"), tr("Error occurred!"), QMessageBox::Ok);
+  }
 
   QDialog::accept();
 }
