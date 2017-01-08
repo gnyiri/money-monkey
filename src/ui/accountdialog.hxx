@@ -27,6 +27,7 @@ public:
    * \brief account_changed
    */
   Q_SLOT
+
   void account_changed(int index);
   /*!
    * \brief accept
