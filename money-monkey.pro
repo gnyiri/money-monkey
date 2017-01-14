@@ -30,7 +30,10 @@ SOURCES +=\
     src/ui/accountdelegate.cxx \
     src/model/expensetypemodel.cxx \
     src/ui/expensetypewidget.cxx \
-    src/ui/expensetypedialog.cxx
+    src/ui/expensetypedialog.cxx \
+    src/model/expensemodel.cxx \
+    src/ui/expensewidget.cxx \
+    src/ui/expensedialog.cxx
 
 HEADERS  +=\
     src/util/application_manager.hxx \
@@ -44,7 +47,10 @@ HEADERS  +=\
     src/ui/accountdelegate.hxx \
     src/model/expensetypemodel.hxx \
     src/ui/expensetypewidget.hxx \
-    src/ui/expensetypedialog.hxx
+    src/ui/expensetypedialog.hxx \
+    src/model/expensemodel.hxx \
+    src/ui/expensewidget.hxx \
+    src/ui/expensedialog.hxx
 
 RESOURCES += \
     res/application.qrc

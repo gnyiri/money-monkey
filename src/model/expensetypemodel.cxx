@@ -13,6 +13,7 @@ ExpenseTypeModel::ExpenseTypeModel(QObject* parent) : QSqlRelationalTableModel(p
   setHeaderData(1, Qt::Horizontal, "Name");
   setHeaderData(2, Qt::Horizontal, "Color");
   setHeaderData(3, Qt::Horizontal, "Icon");
+  setHeaderData(4, Qt::Horizontal, "Importance");
   select();
 }
 //---------------------------------------------------------------------
