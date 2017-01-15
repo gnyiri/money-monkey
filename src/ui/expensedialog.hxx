@@ -8,6 +8,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QGroupBox>
+#include <QCalendarWidget>
 #include <QDialogButtonBox>
 
 class ExpenseDialog : public QDialog
@@ -38,6 +39,26 @@ private:
    * \brief m_NameLineEdit
    */
   QLineEdit* m_NameLineEdit;
+  /*!
+   * \brief m_CalendarWidget
+   */
+  QCalendarWidget* m_CalendarWidget;
+  /*!
+   * \brief m_ValueLineEdit
+   */
+  QLineEdit* m_ValueLineEdit;
+  /*!
+   * \brief m_ExpenseTypeCombo
+   */
+  QComboBox* m_ExpenseTypeCombo;
+  /*!
+   * \brief m_AccountCombo
+   */
+  QComboBox* m_AccountCombo;
+  /*!
+   * \brief m_CommentLineEdit
+   */
+  QLineEdit* m_CommentLineEdit;
   /*!
    * \brief m_ButtonBox
    */

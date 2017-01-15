@@ -68,7 +68,6 @@ AccountDialog::AccountDialog(QSqlRelationalTableModel* account_model, QWidget* p
 //---------------------------------------------------------------------
 void AccountDialog::account_changed(int index)
 {
-  qDebug() << "Hoki";
 }
 //---------------------------------------------------------------------
 void AccountDialog::accept()

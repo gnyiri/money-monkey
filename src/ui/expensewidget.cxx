@@ -48,5 +48,10 @@ void ExpenseWidget::add_new_expense()
 //---------------------------------------------------------------------
 void ExpenseWidget::delete_expense()
 {
-
+  if(QMessageBox::question(this, "Delete Account", "Are you sure to delete the selected Account?", QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+  {
+    QModelIndex index = m_ExpenseView->currentIndex();
+    m_ExpenseModel->removeRow(index.row());
+    m_ExpenseModel->select();
+  }
 }
